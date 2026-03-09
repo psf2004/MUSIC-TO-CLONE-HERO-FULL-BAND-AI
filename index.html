@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tune2Hero | YouTube & Spotify to Clone Hero Charts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="background-glow"></div>
+    <main class="container">
+      <header class="hero">
+        <p class="eyebrow">AI Clone Hero Toolkit</p>
+        <h1>Convert YouTube or Spotify tracks into Clone Hero chart projects.</h1>
+        <p class="subtitle">
+          Paste a link, choose instrument difficulties, and generate a downloadable chart package ready for editing in Moonscraper.
+        </p>
+      </header>
+
+      <section class="panel" aria-labelledby="generator-heading">
+        <h2 id="generator-heading">Chart Generator</h2>
+        <form id="generator-form" novalidate>
+          <label for="trackUrl">YouTube or Spotify URL</label>
+          <div class="input-row">
+            <input
+              id="trackUrl"
+              name="trackUrl"
+              type="url"
+              placeholder="https://youtube.com/watch?v=... or https://open.spotify.com/track/..."
+              required
+            />
+          </div>
+
+          <div class="grid two-col">
+            <div>
+              <label for="songName">Song title (optional)</label>
+              <input id="songName" name="songName" type="text" placeholder="Auto-detect if empty" />
+            </div>
+            <div>
+              <label for="charterName">Charter name</label>
+              <input id="charterName" name="charterName" type="text" placeholder="Your alias" required />
+            </div>
+          </div>
+
+          <div class="difficulty-group">
+            <p>Instrument difficulties</p>
+            <div class="chips">
+              <label><input type="checkbox" name="instrument" value="Lead Guitar" checked />Lead Guitar</label>
+              <label><input type="checkbox" name="instrument" value="Bass" checked />Bass</label>
+              <label><input type="checkbox" name="instrument" value="Rhythm" />Rhythm</label>
+              <label><input type="checkbox" name="instrument" value="Drums" checked />Drums</label>
+              <label><input type="checkbox" name="instrument" value="Vocals" />Vocals</label>
+            </div>
+          </div>
+
+          <div class="grid two-col">
+            <div>
+              <label for="difficulty">AI chart complexity</label>
+              <select id="difficulty" name="difficulty">
+                <option value="Beginner">Beginner-friendly</option>
+                <option value="Intermediate" selected>Intermediate</option>
+                <option value="Expert">Expert</option>
+                <option value="Pro">Pro / Dense patterns</option>
+              </select>
+            </div>
+            <div>
+              <label for="offset">Audio offset (ms)</label>
+              <input id="offset" name="offset" type="number" min="-2000" max="2000" step="5" value="0" />
+            </div>
+          </div>
+
+          <button type="submit" id="generate-btn">Generate Clone Hero Project</button>
+        </form>
+
+        <div id="status" class="status" aria-live="polite"></div>
+      </section>
+
+      <section class="panel muted">
+        <h2>How it works</h2>
+        <ol>
+          <li>Extract audio and metadata from your YouTube/Spotify link.</li>
+          <li>Detect BPM, sections, and instrument transients with AI analysis.</li>
+          <li>Generate <code>.chart</code>, <code>song.ini</code>, and preview stems for import.</li>
+        </ol>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
